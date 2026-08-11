@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tree to Forest — 홍제천 도시 팝업 체험공간</title>
+<meta name="description" content="일상 동선 위에 비일상을 박는다. 홍제천을 따라 흩어진 여섯 개의 농구 노드 — 청년 1인가구를 위한 소비 없이 머물 수 있는 도시의 숲.">
+<meta property="og:title" content="Tree to Forest — 홍제천 도시 팝업 체험공간">
+<meta property="og:description" content="나무에서 숲으로. 골대 위계의 해체로 만드는, 소비 없이 머무는 청년의 숲.">
+<meta property="og:image" content="assets/renders/00-overview.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root{
+    --bg:#0d0d0e; --fg:#f2f1ee; --dim:#8d8b85; --line:#2a2a2c;
+    --accent:#e8422f; --max:1240px;
+    --ff:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:var(--ff);
+       font-feature-settings:"ss01";-webkit-font-smoothing:antialiased;line-height:1.65}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+  .lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+  /* header */
+  header{padding:60px 0 0}
+  .meta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+        border-bottom:1px solid var(--line);padding-bottom:14px}
+  h1{font-size:clamp(52px,11vw,148px);font-weight:800;letter-spacing:-.045em;
+     line-height:.92;margin:38px 0 0}
+  h1 em{font-style:normal;color:var(--accent)}
+  .sub{font-size:clamp(15px,2vw,20px);color:var(--dim);max-width:56ch;margin-top:22px;
+       padding-bottom:44px}
+  .sub b{color:var(--fg);font-weight:600}
+
+  /* hero image */
+  .hero{position:relative;aspect-ratio:16/9;overflow:hidden;background:#151517}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* thesis */
+  .thesis{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+          margin-top:72px;padding:64px 0}
+  .thesis p{font-size:clamp(24px,4.2vw,50px);font-weight:700;letter-spacing:-.035em;
+            line-height:1.22;max-width:22ch}
+  .thesis .note{font-size:15px;font-weight:400;color:var(--dim);max-width:52ch;
+                margin-top:26px;letter-spacing:0;line-height:1.7}
+
+  /* video */
+  section{padding:82px 0}
+  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
+  .shead h2{font-size:clamp(22px,3vw,34px);font-weight:700;letter-spacing:-.03em}
+  video{width:100%;display:block;background:#000}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:38px 28px;margin-top:34px}
+  .grid figure:first-child{grid-column:1/-1}
+  figure{position:relative}
+  figure img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#151517;
+             transition:opacity .35s}
+  .grid figure:first-child img{aspect-ratio:21/9}
+  figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+             padding-top:12px;border-top:1px solid var(--line);margin-top:12px}
+  .cn{font-size:17px;font-weight:650;letter-spacing:-.02em}
+  .cd{font-size:13.5px;color:var(--dim);margin-top:5px;line-height:1.55}
+  .star{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;letter-spacing:.1em}
+  .star.none{color:var(--dim)}
+
+  /* spectrum */
+  .spec{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+        border:1px solid var(--line);margin-top:30px}
+  .spec div{background:var(--bg);padding:26px 22px}
+  .spec h3{font-size:16px;font-weight:700;margin:10px 0 8px;letter-spacing:-.02em}
+  .spec p{font-size:13.5px;color:var(--dim);line-height:1.6}
+
+  /* links */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+         background:var(--line);border:1px solid var(--line)}
+  .links a{background:var(--bg);padding:26px 22px;text-decoration:none;color:var(--fg);
+           display:block;transition:background .2s}
+  .links a:hover{background:#161618}
+  .links strong{display:block;font-size:16px;font-weight:650;letter-spacing:-.02em;margin-top:9px}
+  .links span{font-size:13px;color:var(--dim)}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 76px;font-size:13.5px;color:var(--dim)}
+  footer a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  @media(max-width:760px){
+    .grid{grid-template-columns:1fr;gap:34px}
+    .grid figure:first-child img{aspect-ratio:16/10}
+    .spec{grid-template-columns:1fr}
+    section{padding:58px 0}
+    .wrap{padding:0 20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="meta">
+    <span class="lab">홍제천 · Seoul · 2026</span>
+    <span class="lab">국민대 공간디자인 박사과정 · D2026037 유양욱</span>
+  </div>
+  <h1>Tree to<br><em>Forest</em></h1>
+  <p class="sub">일상 동선 위에 비일상을 박는다. 홍제천을 따라 흩어진 여섯 개의 농구 노드로,
+    청년 1인가구를 위한 <b>소비 없이 머물 수 있는 도시의 숲</b>을 제안한다.</p>
+</header>
+
+<div class="hero">
+  <img src="assets/renders/00-overview.jpg" alt="전경 — 홍제천을 따라 분산된 여섯 개 노드">
+</div>
+
+<div class="wrap">
+
+  <div class="thesis">
+    <p>골대가 유일한 정점이 아닐 때, 지나가는 누구나 머문다.</p>
+    <p class="note">일반 농구 공간에서 경기·관중·시선은 단 하나의 골대로 수렴한다.
+      그 위계를 풀어 형태·재질·스케일이 다른 여러 그루로 흩뿌린다. 나무에서 숲으로.</p>
+  </div>
+
+  <section id="video">
+    <div class="shead"><span class="lab">01</span><h2>파이널 렌더 영상</h2></div>
+    <video controls playsinline preload="metadata" poster="assets/video/poster.jpg">
+      <source src="assets/video/tree-to-forest.mp4" type="video/mp4">
+      브라우저가 video 태그를 지원하지 않는다.
+      <a href="assets/video/tree-to-forest.mp4">영상 파일 내려받기</a>
+    </video>
+  </section>
+
+  <section id="nodes">
+    <div class="shead"><span class="lab">02</span><h2>여섯 개의 노드</h2></div>
+    <p class="cd" style="max-width:60ch">144m 단면에 하천을 따라 숲처럼 분산된다.
+      ★는 농구 강도가 아니라 <b style="color:var(--fg)">'하기 → 머물기' 스펙트럼</b>이다.</p>
+
+    <div class="grid">
+      <figure>
+        <img src="assets/renders/00-overview.jpg" alt="전경">
+        <figcaption>
+          <div><div class="cn">전경 — Top View</div>
+            <div class="cd">6개 노드가 하천을 따라 숲처럼 분산된 전경 · 144m 단면</div></div>
+          <div class="star none">—</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/01-lobby.jpg" alt="로비">
+        <figcaption>
+          <div><div class="cn">로비 — “숲으로 들어가는 문”</div>
+            <div class="cd">안내·입장 · 음료 · 굿즈. 숲의 입구로서 환대의 톤</div></div>
+          <div class="star none">—</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/02-tournament.jpg" alt="토너먼트 코트">
+        <figcaption>
+          <div><div class="cn">토너먼트 코트 — “함께 보는 코트”</div>
+            <div class="cd">3x3 공식 규격 하프코트. 구경꾼 → 관중 → 참여자 전환의 무대</div></div>
+          <div class="star">★★★</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/03-3dcourt.jpg" alt="3D 코트">
+        <figcaption>
+          <div><div class="cn">3D 코트 — “규칙과 변형 사이”</div>
+            <div class="cd">모핑 굴곡면. 굴곡 위에선 실력이 무의미해져 누구나 동등해진다</div></div>
+          <div class="star">★★</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/04-trampoline.jpg" alt="트램펄린 코트">
+        <figcaption>
+          <div><div class="cn">트램펄린 코트 — “튀어 오르는 농구”</div>
+            <div class="cd">점프로 슛이 흐트러진다. 잘하는 사람도 초보가 되는 중력</div></div>
+          <div class="star">★★</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/05-reading.jpg" alt="독서 코트">
+        <figcaption>
+          <div><div class="cn">독서 코트 — “소비 없이 머무는 곳”</div>
+            <div class="cd">림을 스케일업한 거대 원형 구조 + 메쉬망 자리. 본 명제의 hero 공간</div></div>
+          <div class="star">★</div>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/renders/06-horse.jpg" alt="H.O.R.S.E. 코트">
+        <figcaption>
+          <div><div class="cn">H.O.R.S.E. 코트 — “함께 없어도 연결된다”</div>
+            <div class="cd">AI 비동기 HORSE. 이전 사용자의 플레이가 다음 사용자에게 남는다</div></div>
+          <div class="star">★★★</div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="principle">
+    <div class="shead"><span class="lab">03</span><h2>농구를 ‘하게’ 하지 않는다</h2></div>
+    <div class="spec">
+      <div><span class="lab" style="color:var(--accent)">★★★</span>
+        <h3>농구를 한다</h3>
+        <p>토너먼트 · HORSE — 실제로 뛰는 소수의 적극 참여자. 길거리 농구의 진짜 장면.</p></div>
+      <div><span class="lab" style="color:var(--accent)">★★</span>
+        <h3>농구가 (일부러) 안 된다</h3>
+        <p>트램펄린 · 3D 코트 — 진지한 농구가 불가능한 환경 = 의도된 진입장벽 제거.</p></div>
+      <div><span class="lab" style="color:var(--accent)">★</span>
+        <h3>농구에 머문다</h3>
+        <p>독서 · 휴식 — 농구장 안에서 그냥 머문다. 구경·휴식·독서.</p></div>
+    </div>
+    <p class="cd" style="margin-top:22px;max-width:60ch">진입장벽을 낮출수록 머무름은 커진다 —
+      구경꾼 → 관중 → 참여자로 자연스럽게 이동. 진지한 농구인을 포함하는 공간이지만,
+      진지한 플레이어만을 위한 공간은 아니다.</p>
+  </section>
+
+  <section id="docs">
+    <div class="shead"><span class="lab">04</span><h2>문서와 원본 자료</h2></div>
+    <div class="links">
+      <a href="docs/01-thesis.md"><span class="lab">Doc 01</span><strong>논제와 리서치 기반</strong></a>
+      <a href="docs/02-nodes.md"><span class="lab">Doc 02</span><strong>여섯 개의 노드</strong></a>
+      <a href="docs/03-design-log.md"><span class="lab">Doc 03</span><strong>설계 기록 — 중간→파이널</strong></a>
+      <a href="assets/pdf/final-presentation.pdf"><span class="lab">PDF · 31p</span><strong>파이널 발표자료</strong></a>
+      <a href="assets/pdf/midterm-presentation.pdf"><span class="lab">PDF</span><strong>중간평가 발표자료</strong></a>
+      <a href="https://github.com/banhangsim/hongje-tree-to-forest"><span class="lab">GitHub</span><strong>저장소</strong></a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="wrap">
+  <div>유양욱 (반항심) · 국민대학교 일반대학원 공간디자인학과 박사과정 · 반항심디자인스튜디오</div>
+  <div style="margin-top:6px">공간문화콘텐츠기획 · 최종 발표 2026.06.22 · 운영 기반 홍제리버스</div>
+  <div style="margin-top:14px"><a href="https://github.com/banhangsim/hongje-tree-to-forest">github.com/banhangsim/hongje-tree-to-forest</a></div>
+</footer>
+
+</body>
+</html>
