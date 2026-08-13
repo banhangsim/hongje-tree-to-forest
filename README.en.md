@@ -31,9 +31,13 @@ budget and opportunity.
 
 ## Video — final render
 
-https://github.com/banhangsim/hongje-tree-to-forest/raw/main/assets/video/tree-to-forest.mp4
+[![Play the final render video](assets/video/poster-play.jpg)](https://banhangsim.github.io/hongje-tree-to-forest/video.html)
 
-[Open the video file directly →](assets/video/tree-to-forest.mp4)
+▶ **[Play the video (23 s)](https://banhangsim.github.io/hongje-tree-to-forest/video.html)** — or just click the image.
+[Download the MP4](assets/video/tree-to-forest.mp4)
+
+> GitHub READMEs do not turn an in-repo mp4 into a player — clicking it downloads the file.
+> Playback is therefore linked to the player on GitHub Pages.
 
 ## Gallery
 

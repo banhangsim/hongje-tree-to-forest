@@ -121,7 +121,7 @@
   </div>
 
   <section id="video">
-    <div class="shead"><span class="lab">01</span><h2>파이널 렌더 영상</h2></div>
+    <div class="shead"><span class="lab">01</span><h2>파이널 렌더 영상</h2><a href="video.html" class="lab" style="text-decoration:none;border-bottom:1px solid var(--line)">전체 화면으로 →</a></div>
     <video controls playsinline preload="metadata" poster="assets/video/poster.jpg">
       <source src="assets/video/tree-to-forest.mp4" type="video/mp4">
       브라우저가 video 태그를 지원하지 않는다.
@@ -238,5 +238,12 @@
   <div style="margin-top:14px"><a href="https://github.com/banhangsim/hongje-tree-to-forest">github.com/banhangsim/hongje-tree-to-forest</a></div>
 </footer>
 
+<script>
+  // 해시로 진입했을 때 smooth-scroll 이 먹지 않는 경우 보정
+  if (location.hash) {
+    var t = document.querySelector(location.hash);
+    if (t) setTimeout(function(){ t.scrollIntoView(); }, 60);
+  }
+</script>
 </body>
 </html>

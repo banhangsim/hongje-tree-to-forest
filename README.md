@@ -26,9 +26,13 @@
 
 ## 영상 — 파이널 렌더
 
-https://github.com/banhangsim/hongje-tree-to-forest/raw/main/assets/video/tree-to-forest.mp4
+[![파이널 렌더 영상 재생](assets/video/poster-play.jpg)](https://banhangsim.github.io/hongje-tree-to-forest/video.html)
 
-[영상 파일 직접 열기 →](assets/video/tree-to-forest.mp4)
+▶ **[영상 재생하기 (23초)](https://banhangsim.github.io/hongje-tree-to-forest/video.html)** — 이미지를 눌러도 된다.
+[MP4 직접 내려받기](assets/video/tree-to-forest.mp4)
+
+> GitHub README는 저장소 안의 mp4를 플레이어로 바꿔주지 않는다(누르면 파일이 내려받아진다).
+> 그래서 재생은 GitHub Pages 쪽 플레이어로 연결했다.
 
 ## 갤러리
 

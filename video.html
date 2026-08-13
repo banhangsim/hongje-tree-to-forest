@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파이널 렌더 영상 — Tree to Forest</title>
+<meta name="description" content="Tree to Forest 파이널 렌더 영상 — 홍제천 도시 팝업 체험공간">
+<meta property="og:title" content="파이널 렌더 영상 — Tree to Forest">
+<meta property="og:image" content="assets/video/poster-play.jpg">
+<meta property="og:type" content="video.other">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root{--bg:#0d0d0e;--fg:#f2f1ee;--dim:#8d8b85;--line:#2a2a2c;--accent:#e8422f;
+        --ff:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+        --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:var(--ff);line-height:1.6;
+       min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  .lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  header{max-width:1240px;width:100%;margin:0 auto;padding:34px 28px 22px}
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
+  a{color:var(--fg);text-decoration:none}
+  .back{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+  .back:hover{color:var(--fg)}
+  h1{font-size:clamp(26px,4vw,44px);font-weight:750;letter-spacing:-.035em;margin-top:20px}
+  .sub{color:var(--dim);font-size:15px;margin-top:8px}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:0 28px 20px}
+  .stage{width:100%;max-width:1240px}
+  video{width:100%;display:block;background:#000;aspect-ratio:16/9}
+  footer{max-width:1240px;width:100%;margin:0 auto;padding:22px 28px 48px;
+         border-top:1px solid var(--line);font-size:13.5px;color:var(--dim);
+         display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer a{border-bottom:1px solid var(--line)}
+  @media(max-width:760px){header,main,footer{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <a class="back" href="./">← Tree to Forest</a>
+    <span class="lab">홍제천 · Seoul · 2026</span>
+  </div>
+  <h1>파이널 렌더 영상</h1>
+  <p class="sub">여섯 개의 노드를 하천을 따라 훑는다 · 23초</p>
+</header>
+
+<main>
+  <div class="stage">
+    <video controls autoplay muted playsinline preload="auto" poster="assets/video/poster.jpg">
+      <source src="assets/video/tree-to-forest.mp4" type="video/mp4">
+      브라우저가 video 태그를 지원하지 않는다.
+      <a href="assets/video/tree-to-forest.mp4">영상 파일 내려받기</a>
+    </video>
+  </div>
+</main>
+
+<footer>
+  <span>유양욱 (반항심) · 국민대학교 일반대학원 공간디자인학과 박사과정</span>
+  <span><a href="assets/video/tree-to-forest.mp4" download>MP4 내려받기 (13MB)</a></span>
+</footer>
+
+</body>
+</html>
